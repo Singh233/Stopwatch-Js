@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Stopwatch Container -->
+    <div class="container">
+
+        <!-- Div to display the time -->
+        <div class="display-timer">
+            <p id="hour">00</p> <span class="hour-span">:</span>
+            <p id="minute">00</p> <span class="minute-span">:</span>
+            <p id="second">00</p> <span class="second-span">:</span>
+            <p id="milli-sec">00</p>
+        </div>
+
+        <!-- Div to display button controls to control the timer (Start, Stop, Reset) -->
+        <div class="button-controls">
+            <button id="startStop" onclick="startStop()">Start</button>
+            <button id="reset" onclick="resetTimer()">Reset</button>
+        </div>
+    </div>
+
+    <button id="toggle-theme" onclick="toggleTheme()">Change Theme</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
