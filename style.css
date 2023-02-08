@@ -103,9 +103,27 @@ body {
 
 .container .button-controls button {
     margin: 10px;
-    padding: 20px 30px;
-    border-radius: 20px;
+    padding: 20px 50px;
+    border-radius: 30px;
     font-size: 1.5rem;
     margin-top: 0px;
-    
+    border: none;
+    cursor: pointer;
+    transition: 0.4s all ease-out;
+
 }
+
+
+.container .button-controls #startStop {
+    background-color: #0070F2;
+    color: white;
+
+}
+
+.container .button-controls #reset {
+    background-color: #475E75;
+    color: white;
+
+
+}
+
