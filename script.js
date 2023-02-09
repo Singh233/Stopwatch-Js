@@ -11,6 +11,7 @@ let milliSec = 0;
 let displayMilliSec = 0;
 
 let intervalId = null;
+addIcon('Start');
 
 function startStop() {
     
@@ -19,15 +20,17 @@ function startStop() {
         console.log('Start')
         action.innerHTML = 'Stop';
         intervalId = setInterval(start, 10);
-        action.style.backgroundColor = '#D20A0A'
+        action.style.background = 'linear-gradient(275deg, rgba(210,10,10,1) 0%, rgba(132,6,6,1) 100%)'
+        addIcon('Stop');
+        
     } else {
         console.log('Stop');
         action.innerHTML = 'Start'
-        action.style.backgroundColor = '#0070F2'
+        action.style.background = 'linear-gradient(275deg, rgba(0,112,242,1) 0%, rgba(0,42,134,1) 100%)'
+        addIcon('Start');
 
         if (intervalId !== null) {
             clearInterval(intervalId);
-            action.innerHTML = 'Start'
         }
     }
 }
@@ -36,6 +39,9 @@ function resetTimer() {
     if (intervalId !== null) {
         clearInterval(intervalId);
         action.innerHTML = 'Start'
+        action.style.background = 'linear-gradient(275deg, rgba(0,112,242,1) 0%, rgba(0,42,134,1) 100%)'
+        addIcon('Start');
+
         milliSec = 0;
         renderTime(hours = '00', minutes = '00', seconds = '00', displayMilliSec = '00');
     }
@@ -104,21 +110,67 @@ function renderTime(hours, minutes, seconds, displayMilliSec) {
 
 const toggle = document.getElementsByTagName('body')[0];
 const container = document.getElementsByClassName('container')[0];
-toggle.style.backgroundColor = 'white';
+const label = document.getElementsByClassName('label')[0];
+const themeButton = document.getElementById('toggle-theme');
 
+toggle.style.backgroundImage = "url('img/ventura-light.jpeg')";
+themeIcon('light');
 // function to toggle theme 
 function toggleTheme() {
-    const property = toggle.style.getPropertyValue('background-color');
-    if (property == 'white') {
-        toggle.style.backgroundColor = 'black';
+    const property = toggle.style.getPropertyValue('background-image');
+
+    if (property == 'url("img/ventura-light.jpeg")') {
+        themeButton.innerHTML = '';
+        themeButton.style.backgroundColor = 'white';
+        themeButton.style.color = 'black';
+        toggle.style.backgroundImage = "url('img/ventura-dark.jpeg')";
         toggle.style.color = 'white';
-        container.style.border = '1px solid rgba(255, 255, 255, 0.18)'
-    } else { 
-        toggle.style.backgroundColor = 'white';
-        toggle.style.color = 'black';
         container.style.border = '1px solid rgba(0, 0, 0, 0.18)'
+        container.style.backgroundColor = 'rgba(57, 57, 57, 0.2)';
+        label.style.color = 'rgba(198, 198, 198, 0.5)';
+        themeIcon('dark');
+    } else { 
+        themeButton.innerHTML = '';
+        themeButton.style.backgroundColor = 'black';
+        themeButton.style.color = 'white';
+        toggle.style.backgroundImage = "url('img/ventura-light.jpeg')";
+        toggle.style.color = 'black';
+        container.style.border = '1px solid rgba(255, 255, 255, 0.18)';
+        container.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+        label.style.color = 'rgba(53, 53, 53, 0.5)';
+        themeIcon('light');
+
     }
     
+}
+
+
+
+
+// function to change start, stop icon
+function addIcon(button) {
+    let i = document.createElement('i');
+    i.classList.add('fa-solid', button === 'Start' ? 'fa-play' : 'fa-stop'); 
+    document.getElementById('startStop').prepend(i);
+}
+
+
+// function to change light, dark theme icon
+function themeIcon(icon) {
+    let i = document.createElement('i');
+    i.classList.add('fa-solid', icon === 'dark' ? 'fa-sun' : 'fa-moon'); 
+    document.getElementById('toggle-theme').prepend(i);
+
+    let span = document.createElement('span');
+    span.classList.add('tooltip');
+    if (icon === 'dark') {
+        span.innerHTML = 'Light';
+    } else {
+        span.innerHTML = 'Dark';
+    }
+    
+    document.getElementById('toggle-theme').prepend(span);
+
 }
 
 

@@ -7,16 +7,17 @@ body {
     min-height: 100vh;
     min-width: 100vw;
     overflow: hidden;
-    background-color: white;
+    background-image: url('img/ventura-light.jpeg');
+    background-size: cover;
     transition: 0.3s all ease-out;
 }
 
-#toggle-theme {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 10px;
-}
+
+
+
+
+
+
 
 .container {
     display: flex;
@@ -27,6 +28,46 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.18);
     border-radius: 30px;
 
+    background-color: rgba(255, 255, 255, 0.2);
+	-webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
+
+
+}
+
+
+/* Styling for window actions */
+
+.container .window-controls {
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-between;
+    width: 48px;
+    margin: 15px;
+    margin-left: 13px;
+    margin-bottom: 0px;
+}
+
+.container .window-controls .close, .minimise, .maximise {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.container .window-controls .close {
+    background-color: rgba(255, 74, 74, 0.874);
+}
+
+.container .window-controls .minimise {
+    background-color: rgba(255, 234, 73, 0.941);
+
+}
+
+.container .window-controls .maximise {
+    background-color: rgba(53, 255, 53, 0.921);
 
 }
 
@@ -34,54 +75,78 @@ body {
 /* Styling for Displaying timer */
 .container .display-timer {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 57%;
+    width: 100%;
+    padding: 10px;
+
+}
+
+.container .display-timer .time {
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
-    height: 50%;
-    width: 100%;
+    margin-left: 20px;
+
+
+    transition: 0.4s all ease-out;
 }
 
-.container .display-timer p {
+.container .display-timer .time p {
     font-size: 4rem;
     position: absolute;
 }
 
-.container .display-timer #hour {
+.container .display-timer .time #hour {
     margin-right: 270px;
 }
-.container .display-timer #minute {
+.container .display-timer .time #minute {
     margin-right: 90px;
 }
-.container .display-timer #second {
+.container .display-timer .time #second {
     margin-left: 90px;
 }
-.container .display-timer #milli-sec {
-    margin-left: 270px;
+.container .display-timer .time #milli-sec {
+    margin-left: 250px;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
 }
 
 
 
-.container .display-timer span {
+.container .display-timer .time span {
     font-size: 4rem;
     position: absolute;
 }
 
-.container .display-timer .hour-span {
+.container .display-timer .time .hour-span {
     font-size: 4rem;
     margin-right: 180px;
     margin-top: -9px;
 }
 
-.container .display-timer .minute-span {
+.container .display-timer .time .minute-span {
     font-size: 4rem;
     margin-right: 0px;
     margin-top: -9px;
 }
 
-.container .display-timer .second-span {
+.container .display-timer .time .second-span {
     font-size: 4rem;
     margin-left: 180px;
     margin-top: -9px;
+}
+
+
+.container .display-timer .label {
+    display: flex;
+    justify-content: space-between;
+    width: 290px;
+    margin-top: 5px;
+    color: rgba(53, 53, 53, 0.5);
 }
 
 
@@ -97,15 +162,17 @@ body {
     align-items: center;
     justify-content: center;
 
-    padding: 20px;
     
 }
 
 .container .button-controls button {
+    display: flex;
+    align-items: center;
     margin: 10px;
-    padding: 20px 50px;
-    border-radius: 30px;
-    font-size: 1.5rem;
+    
+    padding: 20px 60px;
+    border-radius: 22px;
+    font-size: 1.4rem;
     margin-top: 0px;
     border: none;
     cursor: pointer;
@@ -115,15 +182,108 @@ body {
 
 
 .container .button-controls #startStop {
-    background-color: #0070F2;
+    background: linear-gradient(275deg, rgba(0,112,242,1) 0%, rgba(0,42,134,1) 100%);
     color: white;
+    transition: 0.4s all ease-out;
 
 }
 
 .container .button-controls #reset {
-    background-color: #475E75;
+    background: linear-gradient(275deg, rgba(71,94,117,1) 0%, rgba(26,39,51,1) 100%);
     color: white;
 
 
+}
+
+.container .button-controls #startStop:hover, #reset:hover{
+    opacity: 0.8;
+    transition: all 0.2s;
+}
+
+
+.container .button-controls #startStop:active , #reset:active {
+    transition: all 0.2s;
+
+}
+
+.container .button-controls .fa-solid {
+    margin-right: 7px;
+    transition: 0.4s all ease-out;
+}
+
+
+
+
+
+
+/* Toggle theme button styles */
+#toggle-theme {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    margin: 20px;
+    border: none;
+    background-color: white;
+    padding: 15px 20px;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#toggle-theme:hover {
+    color: white;
+    
+}
+
+.tooltip {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    font-size: 12px;
+    background: #ffffff;
+    color: #ffffff;
+    padding: 5px 25px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #ffffff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+
+#toggle-theme:hover .tooltip {
+    top: -45px;
+    left: -10px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+svg:hover span,
+svg:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+#toggle-theme:hover,
+#toggle-theme:hover i,
+#toggle-theme:hover .tooltip,
+#toggle-theme:hover .tooltip::before {
+    background: linear-gradient(320deg, rgb(3, 77, 146), rgb(0, 60, 255));
+    color: #ffffff;
 }
 

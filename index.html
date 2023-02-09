@@ -6,28 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stopwatch</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
     <!-- Stopwatch Container -->
     <div class="container">
+        <div class="window-controls">
+            <div class="close"></div>
+            <div class="minimise"></div>
+            <div class="maximise"></div>
+            
+        </div>
+
 
         <!-- Div to display the time -->
         <div class="display-timer">
-            <p id="hour">00</p> <span class="hour-span">:</span>
-            <p id="minute">00</p> <span class="minute-span">:</span>
-            <p id="second">00</p> <span class="second-span">:</span>
-            <p id="milli-sec">00</p>
+            <div class="time">
+                <p id="hour">00</p> <span class="hour-span">:</span>
+                <p id="minute">00</p> <span class="minute-span">:</span>
+                <p id="second">00</p> <span class="second-span">.</span>
+                <p id="milli-sec">00</p>
+            </div>
+            <div class="label">
+                <p>Hour</p>
+                <p>&nbsp; Minute</p>
+                <p>Seconds &nbsp; &nbsp;</p>
+                <p></p>
+            </div>
+            
         </div>
 
         <!-- Div to display button controls to control the timer (Start, Stop, Reset) -->
         <div class="button-controls">
             <button id="startStop" onclick="startStop()">Start</button>
-            <button id="reset" onclick="resetTimer()">Reset</button>
+            <button id="reset" onclick="resetTimer()"><i class="fa-solid fa-rotate-right"></i> Reset</button>
         </div>
     </div>
 
-    <button id="toggle-theme" onclick="toggleTheme()">Change Theme</button>
+    <button id="toggle-theme" onclick="toggleTheme()">
+        <span class="tooltip">Dark</span>
+    </button>
 
     <script src="script.js"></script>
 </body>
