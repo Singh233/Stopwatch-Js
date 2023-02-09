@@ -287,3 +287,42 @@ svg:hover .tooltip {
     color: #ffffff;
 }
 
+
+
+
+
+@media screen and (max-width: 425px) {
+
+    .container {
+        
+        width: 98vw;
+        margin: 5px;
+    
+    
+    }
+
+    .container .button-controls button {
+    
+        
+        padding: 15px 30px;
+    
+    }
+
+    #toggle-theme {
+        margin: 10px;
+    }
+
+    .tooltip {
+        display: none;
+    }
+
+   
+
+    #toggle-theme:hover,
+    #toggle-theme:hover i,
+    #toggle-theme:hover .tooltip,
+    #toggle-theme:hover .tooltip::before {
+        color: #ffffff;
+    }
+}
+
